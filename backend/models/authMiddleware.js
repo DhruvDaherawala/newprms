@@ -1,10 +1,11 @@
+// models/authMiddleware.js
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
 dotenv.config();
 const jwtKey = process.env.JWT_SECRET;
 
-const authenticateToken = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
     const token = req.header("Authorization");
     if (!token) return res.status(401).json({ error: "Access denied" });
 
@@ -15,4 +16,4 @@ const authenticateToken = (req, res, next) => {
     });
 };
 
-module.exports = { authenticateToken };
+module.exports = { authMiddleware };
