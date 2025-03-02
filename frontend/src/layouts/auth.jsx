@@ -6,6 +6,7 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { Navbar, Footer } from "@/widgets/layout";
+import SignIn from "@/pages/Auth/sign-in";  // ✅ Ensure SignIn is imported
 import routes from "@/routes";
 
 export function Auth() {
@@ -35,13 +36,18 @@ export function Auth() {
   return (
     <div className="relative min-h-screen w-full">
       <Routes>
-        {routes.map(
-          ({ layout, pages }) =>
-            layout === "auth" &&
-            pages.map(({ path, element }) => (
-              <Route exact path={path} element={element} />
-            ))
-        )}
+        {/* ✅ Manually add SignIn and SignUp routes */}
+        <Route path="/auth/sign-in" element={<SignIn />} />
+
+        {/* ✅ Ensure `routes` properly maps routes */}
+        {routes &&
+          routes.map(({ layout, pages }) =>
+            layout === "auth"
+              ? pages.map(({ path, element }) => (
+                  <Route key={path} exact path={path} element={element} />
+                ))
+              : null
+          )}
       </Routes>
     </div>
   );

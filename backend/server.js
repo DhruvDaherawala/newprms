@@ -51,6 +51,7 @@ const path = require("path");
 require("dotenv").config();
 
 // Routes
+const authRoutes = require("./routes/auth.routes");
 const propertyRoutes = require("./routes/propertyRoutes");
 const renterRoutes = require("./routes/renterRoutes");
 const renterAllocationRoutes = require("./routes/renterAllocationRoutes");
@@ -82,6 +83,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.get("/", (req, res) => {
   res.send("API is running");
 });
+
+app.use("/api/auth", authRoutes);
 
 // Property routes
 app.use("/api/property", propertyRoutes);
