@@ -24,7 +24,7 @@ export function SignIn() {
         title: "Login Successful!",
         text: "You are being redirected to the dashboard.",
         icon: "success",
-        timer: 1500,
+        timer: 2500,
         showConfirmButton: false,
       });
       navigate("/dashboard/home");
